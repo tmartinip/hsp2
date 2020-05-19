@@ -12,6 +12,7 @@ def intt(datta,b):
     dplot =dplot.reshape(datta['dx'],datta['dy'])
     plt.figure()
     plt.pcolor(dplot)
+    plt.show()
 
 ## cria uma imagem baseado em area de uma banda 
 
@@ -29,6 +30,7 @@ def area(data,a,b):
     dplot =dplot.reshape(data['dx'],data['dy'])
     plt.figure()
     plt.pcolor(dplot)
+    plt.show()
         
     
 def mean(data,ini1,fim1):
@@ -48,13 +50,14 @@ def mean(data,ini1,fim1):
     dplot =dplot.reshape(data['dx'],data['dy'])
     plt.pcolor(dplot)
     plt.figure()
+    plt.show()
     
-def int_plt(datta):
+def int_plt(datta,b):
     import matplotlib.pyplot as plt
     import numpy as np
     xx = 2
     yy = 2
-    sel = datta ['wn'] ==1650
+    sel = datta ['wn'] ==b
     ver = datta['r'][:,sel]
     data = ver.reshape(datta['dx'],datta['dy'])
     plt.figure(1)
@@ -76,4 +79,13 @@ def int_plt(datta):
         plt.plot(datta['wn'],datta['r'][line,:])
         print(xx,yy)
         
-    
+def pplot(data,nspc):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    r = data['r']
+    k = np.random.randint(0,r.shape[0],(nspc),dtype='uint32')
+    plt.figure()
+    for i in k:
+        plt.plot(data['wn'],r[i][:])
+    plt.xlabel(' Número de onda')
+    plt.show()
